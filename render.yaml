@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: aura
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /api/metrics/health
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: aura-db
+          property: connectionString
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+
+databases:
+  - name: aura-db
+    plan: free
+    databaseName: aura_reliability_db
+    user: aura_user

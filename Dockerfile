@@ -35,8 +35,8 @@ COPY --from=frontend-builder /frontend/dist /app/frontend/dist
 EXPOSE 8000
 
 # Health check
-HEALTHCHECK --interval=10s --timeout=5s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8000/api/metrics/health || exit 1
+HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
+    CMD curl -f http://localhost:${PORT:-8000}/api/metrics/health || exit 1
 
 # Start Server
 CMD ["python", "main.py"]

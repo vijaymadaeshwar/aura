@@ -95,9 +95,11 @@ else:
 
 if __name__ == "__main__":
     import uvicorn
+    port = int(os.getenv("PORT", "8000"))
+    reload = os.getenv("ENVIRONMENT", "development").lower() != "production"
     print("=" * 60)
     print("  AURA — Autonomous Reliability Agent")
     print("  Observe. Diagnose. Recover. Verify.")
-    print("  Starting unified server at http://localhost:8000")
+    print(f"  Starting unified server at http://0.0.0.0:{port}")
     print("=" * 60)
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=reload)
