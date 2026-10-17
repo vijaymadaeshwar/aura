@@ -114,6 +114,24 @@ def get_db() -> Generator[PostgresConnectionWrapper, None, None]:
         conn.close()
 
 
+def clear_incident_history() -> int:
+    """
+    Delete all incidents, their events, recovery actions, and telemetry history.
+    Returns the number of incidents removed. Useful for a clean demo reset.
+    """
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT COUNT(*) AS cnt FROM incidents;")
+        row = cursor.fetchone()
+        count = row["cnt"] if row else 0
+        cursor.execute("DELETE FROM incident_events;")
+        cursor.execute("DELETE FROM recovery_actions;")
+        cursor.execute("DELETE FROM incidents;")
+        cursor.execute("DELETE FROM telemetry_history;")
+    logger.info(f"Incident history cleared ({count} incidents removed).")
+    return count
+
+
 def check_db_connection() -> Dict[str, Any]:
     """Verify PostgreSQL connectivity and return metadata."""
     params = get_db_params()

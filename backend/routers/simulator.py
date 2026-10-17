@@ -6,6 +6,7 @@ from fastapi import APIRouter, Query, HTTPException
 from typing import Dict, Any
 from schemas import SimulationResponse, SimulationScenarioEnum
 from services.simulator import trigger_simulation, reset_simulation
+from database import clear_incident_history
 
 router = APIRouter(prefix="/api/simulate", tags=["Incident Simulator"])
 
@@ -47,3 +48,14 @@ def simulate_scenario(scenario: str, auto_execute: bool = Query(True)):
 def reset_sim():
     """Reset simulation telemetry and restore normal live system observation."""
     return reset_simulation()
+
+
+@router.post("/purge")
+def purge_history():
+    """Delete ALL incidents, events, recovery actions and telemetry history for a clean demo."""
+    count = clear_incident_history()
+    return {
+        "status": "SUCCESS",
+        "incidents_deleted": count,
+        "message": "All incident and telemetry history cleared. AURA is ready for a fresh demo."
+    }
