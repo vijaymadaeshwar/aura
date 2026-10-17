@@ -144,7 +144,7 @@ flowchart TD
 ## 7. Project Structure
 
 ```
-D:/AURA_MINI V2/
+aura/
 ├── backend/
 │   ├── main.py                  # FastAPI entry point & unified static SPA server
 │   ├── config.py                # PostgreSQL environment variable configuration
@@ -243,20 +243,20 @@ docker compose ps
 
 ### Step 1: Install Backend Dependencies
 ```powershell
-cd "D:\AURA_MINI V2\backend"
+cd backend
 pip install -r requirements.txt
 ```
 
 ### Step 2: Run Database Migrations (Optional / Automatic)
 The database schema initializes automatically on backend startup. Alternatively, run migrations using Alembic:
 ```powershell
-cd "D:\AURA_MINI V2\backend"
+cd backend
 alembic upgrade head
 ```
 
 ### Step 3: Start Application
 ```powershell
-cd "D:\AURA_MINI V2\backend"
+cd backend
 python main.py
 ```
 * **Web UI & Dashboard:** [http://localhost:8000](http://localhost:8000)
@@ -269,7 +269,7 @@ python main.py
 To run all unit, integration, and database tests:
 
 ```powershell
-cd "D:\AURA_MINI V2"
+cd aura
 python -m pytest backend/test_aura.py backend/test_database_pg.py -v
 ```
 
