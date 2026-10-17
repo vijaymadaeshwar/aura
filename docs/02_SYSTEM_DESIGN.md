@@ -1,5 +1,5 @@
 # System Design Document
-## Project: AURA Mini — Autonomous Reliability Agent
+## Project: AURA — Autonomous Reliability Agent
 **Document Version:** 1.0.0  
 **Focus:** Software Architecture, Component Design, Data Flow, Design Decisions & Scalability
 
@@ -7,7 +7,7 @@
 
 ## 1. Architecture Overview
 
-AURA Mini is designed around a clean, layered architectural model that cleanly separates presentation, RESTful API routing, autonomous business services, and local persistence.
+AURA is designed around a clean, layered architectural model that cleanly separates presentation, RESTful API routing, autonomous business services, and local persistence.
 
 ```mermaid
 flowchart TD
@@ -31,7 +31,7 @@ flowchart TD
     end
 
     subgraph Persistence_Layer ["Storage Layer (PostgreSQL 16)"]
-        DB[("PostgreSQL Database (aura_db)<br/>Connection Pool & Alembic Migrations")]
+        DB[("PostgreSQL Database (aura_reliability_db)<br/>Connection Pool & Alembic Migrations")]
     end
 
     UI <-->|HTTP / REST JSON| ROUTERS
@@ -122,7 +122,7 @@ Each backend component has a single, well-defined responsibility with decoupled 
 
 ## 3. Data Flow & Incident Lifecycle
 
-The lifecycle of an incident in AURA Mini progresses through an explicit finite state machine:
+The lifecycle of an incident in AURA progresses through an explicit finite state machine:
 
 ```
                   +--------------------------------+
@@ -266,7 +266,7 @@ sequenceDiagram
 
 ## 7. Scalability & Evolution Path
 
-| Layer | Current Implementation (AURA Mini) | Future Scaled Architecture |
+| Layer | Current Implementation (AURA) | Future Scaled Architecture |
 | :--- | :--- | :--- |
 | **Telemetry Ingestion** | Local `psutil` polling every 2s | Distributed OpenTelemetry collectors streaming metrics via Apache Kafka or NATS. |
 | **Storage Layer** | Single SQLite file (`aura.db`) with WAL mode | PostgreSQL with TimescaleDB extension for high-throughput time-series telemetry. |

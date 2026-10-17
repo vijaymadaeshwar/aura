@@ -1,5 +1,5 @@
 """
-AURA MINI - System Settings API Router
+AURA - System Settings API Router
 """
 
 from fastapi import APIRouter

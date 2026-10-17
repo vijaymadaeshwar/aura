@@ -1,4 +1,4 @@
-"""Initial PostgreSQL Schema for AURA Mini
+"""Initial PostgreSQL Schema for AURA
 
 Revision ID: 001_initial_postgresql_schema
 Revises: 

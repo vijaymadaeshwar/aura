@@ -1,5 +1,5 @@
 """
-AURA MINI - SQLAlchemy Declarative Models
+AURA - SQLAlchemy Declarative Models
 Defines relational schemas for PostgreSQL and Alembic migrations.
 """
 

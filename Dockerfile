@@ -1,4 +1,4 @@
-# Multi-Stage Build for AURA Mini (Frontend + Backend + PostgreSQL)
+# Multi-Stage Build for AURA (Frontend + Backend + PostgreSQL)
 
 # Stage 1: Build Frontend
 FROM node:22-alpine AS frontend-builder

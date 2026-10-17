@@ -1,5 +1,5 @@
 """
-AURA MINI - PostgreSQL Layer Unit & Integration Tests
+AURA - PostgreSQL Layer Unit & Integration Tests
 Tests PostgreSQL configuration parsing, DDL schemas, Alembic models, and error handling.
 """
 
@@ -17,7 +17,7 @@ from models import Incident, IncidentEvent, RecoveryAction, TelemetryHistory, Sy
 def test_postgres_config_parsing():
     """Verify that PostgreSQL connection parameters are parsed properly from environment."""
     params = get_db_params()
-    assert params["dbname"] in ("aura_db", "aura_mini_db")
+    assert params["dbname"] == "aura_reliability_db"
     assert params["user"] == "aura_user"
     assert params["host"] in ("localhost", "127.0.0.1")
     assert params["port"] == 5432
@@ -65,7 +65,7 @@ def test_database_connection_error_on_invalid_host():
     orig_config_url = config.DATABASE_URL
     orig_timeout = os.environ.get("POSTGRES_CONNECT_TIMEOUT")
 
-    os.environ["DATABASE_URL"] = "postgresql://aura_user:aura_password@invalid-unreachable-host-aura-test:5432/aura_db"
+    os.environ["DATABASE_URL"] = "postgresql://aura_user:aura_password@invalid-unreachable-host-aura-test:5432/aura_reliability_db"
     config.DATABASE_URL = os.environ["DATABASE_URL"]
     os.environ["POSTGRES_HOST"] = "invalid-unreachable-host-aura-test"
     os.environ["POSTGRES_CONNECT_TIMEOUT"] = "1"

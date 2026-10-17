@@ -1,5 +1,5 @@
 """
-AURA MINI - Incident Detection Service (Module 2: Incident Detection)
+AURA - Incident Detection Service (Module 2: Incident Detection)
 Monitors telemetry against dynamic thresholds and detects anomalies.
 """
 

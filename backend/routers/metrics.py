@@ -1,5 +1,5 @@
 """
-AURA MINI - Metrics & Telemetry Router
+AURA - Metrics & Telemetry Router
 """
 
 from fastapi import APIRouter

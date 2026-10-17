@@ -1,5 +1,5 @@
 """
-AURA MINI - Runbook Engine (Module 4: Runbook Engine)
+AURA - Runbook Engine (Module 4: Runbook Engine)
 Defines catalog of executable recovery runbooks and maps incidents to the optimal runbook.
 """
 

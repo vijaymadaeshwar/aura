@@ -1,5 +1,5 @@
 """
-AURA MINI - Pydantic Data Models & Request/Response Schemas
+AURA - Pydantic Data Models & Request/Response Schemas
 """
 
 from pydantic import BaseModel, Field

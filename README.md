@@ -1,4 +1,4 @@
-# AURA Mini — Autonomous Reliability Agent
+# AURA — Autonomous Reliability Agent
 
 > **Observe. Detect. Diagnose. Remediate. Verify.**
 
@@ -6,18 +6,18 @@
 
 ## 1. Project Overview
 
-### What is AURA Mini?
-**AURA Mini** is an enterprise-ready, closed-loop reliability agent designed to automate the complete incident lifecycle for modern distributed software systems.
+### What is AURA?
+**AURA** is an enterprise-ready, closed-loop reliability agent designed to automate the complete incident lifecycle for modern distributed software systems.
 
 ### What Problem Does It Solve?
 Traditional monitoring and observability tools (such as basic dashboards or metric scrapers) only notify engineers that a system is unhealthy. Once an alert triggers, human engineers must manually investigate logs, determine root causes, locate the correct runbook, execute remediation steps, and verify whether the system actually recovered.
 
 ### Why is it Needed?
-AURA Mini closes this operational loop. Instead of stopping at notification, it executes a deterministic, five-stage reliability automation pipeline:
+AURA closes this operational loop. Instead of stopping at notification, it executes a deterministic, five-stage reliability automation pipeline:
 
 $$\text{OBSERVE} \longrightarrow \text{DETECT} \longrightarrow \text{DIAGNOSE} \longrightarrow \text{REMEDIATE} \longrightarrow \text{VERIFY}$$
 
-> **Important Scope Clarification:** AURA Mini does **not** replace human software engineers or SREs. It automates repetitive, well-defined recovery procedures and immediately escalates to human on-call engineers when an automated recovery attempt fails verification.
+> **Important Scope Clarification:** AURA does **not** replace human software engineers or SREs. It automates repetitive, well-defined recovery procedures and immediately escalates to human on-call engineers when an automated recovery attempt fails verification.
 
 ---
 
@@ -30,7 +30,7 @@ Modern software systems generate continuous streams of metrics, logs, and health
 3. **Repetitive Remediation:** Engineers repeatedly execute identical manual steps (restarting worker processes, clearing cache buffers, compressing rotated logs).
 4. **Missing Verification:** Many automated scripts simply fire an action and assume success without re-measuring the system to verify that the metric actually returned below safety thresholds.
 
-**AURA Mini solves this by automating the entire reliability cycle with strict before-and-after verification backed by a relational PostgreSQL database.**
+**AURA solves this by automating the entire reliability cycle with strict before-and-after verification backed by a relational PostgreSQL database.**
 
 ---
 
@@ -98,7 +98,7 @@ flowchart TD
     end
 
     subgraph Storage ["Relational Storage (PostgreSQL 16)"]
-        DB[("PostgreSQL Database (aura_db)<br/>Connection Pool & Foreign Keys")]
+        DB[("PostgreSQL Database (aura_reliability_db)<br/>Connection Pool & Foreign Keys")]
     end
 
     Frontend <-->|HTTP / REST JSON| API
@@ -203,7 +203,7 @@ D:/AURA_MINI V2/
 
 ## 8. Database Configuration & Environment Variables
 
-AURA Mini reads PostgreSQL connection credentials from `.env` or system environment variables:
+AURA reads PostgreSQL connection credentials from `.env` or system environment variables:
 
 | Variable | Default Value | Description |
 | :--- | :--- | :--- |
@@ -211,8 +211,8 @@ AURA Mini reads PostgreSQL connection credentials from `.env` or system environm
 | `POSTGRES_PASSWORD` | `aura_password` | PostgreSQL database password |
 | `POSTGRES_HOST` | `localhost` (or `postgres` in Docker) | PostgreSQL host address |
 | `POSTGRES_PORT` | `5432` | PostgreSQL listening port |
-| `POSTGRES_DB` | `aura_db` | Target PostgreSQL database name |
-| `DATABASE_URL` | `postgresql://aura_user:aura_password@localhost:5432/aura_db` | Full standard connection URL |
+| `POSTGRES_DB` | `aura_reliability_db` | Target PostgreSQL database name |
+| `DATABASE_URL` | `postgresql://aura_user:aura_password@localhost:5432/aura_reliability_db` | Full standard connection URL |
 
 ---
 
@@ -221,7 +221,7 @@ AURA Mini reads PostgreSQL connection credentials from `.env` or system environm
 To run the complete application stack with PostgreSQL 16:
 
 ```bash
-# 1. Start PostgreSQL and AURA Mini
+# 1. Start PostgreSQL and AURA
 docker compose up -d --build
 
 # 2. View running containers and health status
@@ -239,7 +239,7 @@ docker compose ps
 ### Prerequisites
 * **Python 3.10+** (Tested on Python 3.11.9)
 * **Node.js 18+** & **npm** (Tested on Node v22.10.x)
-* **PostgreSQL 14+** (Running locally or via `docker run -d -p 5432:5432 -e POSTGRES_USER=aura_user -e POSTGRES_PASSWORD=aura_password -e POSTGRES_DB=aura_db postgres:16-alpine`)
+* **PostgreSQL 14+** (Running locally or via `docker run -d -p 5432:5432 -e POSTGRES_USER=aura_user -e POSTGRES_PASSWORD=aura_password -e POSTGRES_DB=aura_reliability_db postgres:16-alpine`)
 
 ### Step 1: Install Backend Dependencies
 ```powershell
@@ -296,6 +296,6 @@ Follow these steps during a technical interview or live demonstration:
 5. **Demonstrate Autonomous Escalation on Failure:**
    - Click **`Simulate Recovery Failure`**.
    - Show that after executing remediation, the post-remediation metric remains high ($91.5\% \ge 80.0\%$).
-   - Show that AURA Mini marks the incident as `FAILED` and appends an `ESCALATED` event notifying human Tier-2 SREs.
+   - Show that AURA marks the incident as `FAILED` and appends an `ESCALATED` event notifying human Tier-2 SREs.
 6. **Reset:**
    - Click **`Reset Simulation`** to return to live host observation.

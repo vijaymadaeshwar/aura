@@ -1,5 +1,5 @@
 """
-AURA MINI - Database & Application Configuration
+AURA - Database & Application Configuration
 Reads environment variables for PostgreSQL and runtime settings.
 """
 
@@ -19,7 +19,7 @@ POSTGRES_USER = os.getenv("POSTGRES_USER", "aura_user")
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", "aura_password")
 POSTGRES_HOST = os.getenv("POSTGRES_HOST", "localhost")
 POSTGRES_PORT = int(os.getenv("POSTGRES_PORT", "5432"))
-POSTGRES_DB = os.getenv("POSTGRES_DB", "aura_db")
+POSTGRES_DB = os.getenv("POSTGRES_DB", "aura_reliability_db")
 
 # Constructed or overridden DATABASE_URL
 DEFAULT_DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"

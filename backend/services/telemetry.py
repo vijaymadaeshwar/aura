@@ -1,5 +1,5 @@
 """
-AURA MINI - System Telemetry Service (Module 1: Observability)
+AURA - System Telemetry Service (Module 1: Observability)
 Collects host metrics using psutil and maintains historical telemetry snapshots.
 Supports non-destructive simulation overlays for safe live demonstrations.
 """

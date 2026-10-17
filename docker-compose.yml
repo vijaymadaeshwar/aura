@@ -9,13 +9,13 @@ services:
     environment:
       POSTGRES_USER: aura_user
       POSTGRES_PASSWORD: aura_password
-      POSTGRES_DB: aura_db
+      POSTGRES_DB: aura_reliability_db
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U aura_user -d aura_db"]
+      test: ["CMD-SHELL", "pg_isready -U aura_user -d aura_reliability_db"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -23,7 +23,7 @@ services:
     networks:
       - aura_net
 
-  # 2. AURA Mini Unified Application Service (FastAPI + React Dashboard)
+  # 2. AURA Unified Application Service (FastAPI + React Dashboard)
   app:
     build:
       context: .
@@ -31,12 +31,12 @@ services:
     container_name: aura_app
     restart: unless-stopped
     environment:
-      - DATABASE_URL=postgresql://aura_user:aura_password@postgres:5432/aura_db
+      - DATABASE_URL=postgresql://aura_user:aura_password@postgres:5432/aura_reliability_db
       - POSTGRES_HOST=postgres
       - POSTGRES_PORT=5432
       - POSTGRES_USER=aura_user
       - POSTGRES_PASSWORD=aura_password
-      - POSTGRES_DB=aura_db
+      - POSTGRES_DB=aura_reliability_db
       - PORT=8000
       - HOST=0.0.0.0
       - ENVIRONMENT=production

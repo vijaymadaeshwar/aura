@@ -1,5 +1,5 @@
 """
-AURA MINI — Autonomous Reliability Agent
+AURA — Autonomous Reliability Agent
 Backend Application Entry Point
 """
 
@@ -25,17 +25,17 @@ async def lifespan(app: FastAPI):
     # 1. Initialize PostgreSQL Database
     try:
         init_db()
-        log_event("INFO", "CORE", "AURA Mini Autonomous Reliability Agent initialized with PostgreSQL successfully.")
+        log_event("INFO", "CORE", "AURA Autonomous Reliability Agent initialized with PostgreSQL successfully.")
         log_event("INFO", "CORE", "Reliability Loop active: OBSERVE → DETECT → DIAGNOSE → REMEDIATE → VERIFY")
     except Exception as e:
         log_event("ERROR", "DATABASE", f"Failed to initialize PostgreSQL database: {e}")
         raise
     yield
-    log_event("INFO", "CORE", "AURA Mini shutting down.")
+    log_event("INFO", "CORE", "AURA shutting down.")
 
 
 app = FastAPI(
-    title="AURA MINI — Autonomous Reliability Agent",
+    title="AURA — Autonomous Reliability Agent",
     description="Automated closed-loop reliability agent: Observe, Detect, Diagnose, Remediate, Verify.",
     version="1.0.0",
     lifespan=lifespan
@@ -77,7 +77,7 @@ else:
     @app.get("/")
     def root():
         return {
-            "agent": "AURA MINI",
+            "agent": "AURA",
             "description": "Autonomous Reliability Agent",
             "mission": "Automating the reliability loop from incident detection to verified recovery.",
             "status": "ONLINE",
@@ -96,7 +96,7 @@ else:
 if __name__ == "__main__":
     import uvicorn
     print("=" * 60)
-    print("  AURA MINI — Autonomous Reliability Agent")
+    print("  AURA — Autonomous Reliability Agent")
     print("  Observe. Diagnose. Recover. Verify.")
     print("  Starting unified server at http://localhost:8000")
     print("=" * 60)

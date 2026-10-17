@@ -1,5 +1,5 @@
 """
-AURA MINI - Runbooks API Router
+AURA - Runbooks API Router
 """
 
 from fastapi import APIRouter, HTTPException

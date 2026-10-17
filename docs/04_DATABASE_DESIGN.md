@@ -1,7 +1,7 @@
 # Database Design Document
-## Project: AURA Mini — Autonomous Reliability Agent
+## Project: AURA — Autonomous Reliability Agent
 **Database Engine:** PostgreSQL 16  
-**Target Database:** `aura_db`  
+**Target Database:** `aura_reliability_db`  
 **Connection Management:** Python `psycopg2` / `psycopg3` with `ThreadedConnectionPool`, RealDictCursor, and SQLAlchemy Declarative ORM (`database.py`, `models.py`)  
 **Migrations:** Alembic 1.20.0
 
@@ -9,7 +9,7 @@
 
 ## 1. Database Overview
 
-AURA Mini uses an enterprise-grade relational **PostgreSQL 16** database configured for high performance, zero-leak connection pooling, and strict relational integrity.
+AURA uses an enterprise-grade relational **PostgreSQL 16** database configured for high performance, zero-leak connection pooling, and strict relational integrity.
 
 ### Connection Pooling & Transaction Management
 To ensure robust concurrent operation between frontend telemetry polling, autonomous remediation execution, and sliding-window historical logging, connection handling is managed via a thread-safe connection pool:

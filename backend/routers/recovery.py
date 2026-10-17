@@ -1,5 +1,5 @@
 """
-AURA MINI - Autonomous Recovery API Router
+AURA - Autonomous Recovery API Router
 """
 
 from fastapi import APIRouter, HTTPException, Query

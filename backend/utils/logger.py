@@ -1,5 +1,5 @@
 """
-AURA MINI - Logging & Audit Trail Utility
+AURA - Logging & Audit Trail Utility
 Provides formatted console logging and an in-memory circular buffer for live log observation.
 """
 
@@ -18,7 +18,7 @@ logging.basicConfig(
     datefmt="%H:%M:%S"
 )
 
-logger = logging.getLogger("AURA_MINI")
+logger = logging.getLogger("AURA")
 
 
 def log_event(level: str, source: str, message: str) -> Dict[str, str]:

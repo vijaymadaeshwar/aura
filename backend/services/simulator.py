@@ -1,5 +1,5 @@
 """
-AURA MINI - Incident Simulator Service (Module 7: Incident Simulator)
+AURA - Incident Simulator Service (Module 7: Incident Simulator)
 Generates safe, controlled reliability incidents for demonstration and testing.
 Supports automated closed-loop execution and step-by-step interactive inspection.
 """

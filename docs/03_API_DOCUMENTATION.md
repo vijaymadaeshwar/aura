@@ -1,5 +1,5 @@
 # REST API Documentation
-## Project: AURA Mini — Autonomous Reliability Agent
+## Project: AURA — Autonomous Reliability Agent
 **Document Version:** 1.0.0  
 **Base URL:** `http://localhost:8000`  
 **Content-Type:** `application/json`  
@@ -10,9 +10,9 @@
 
 ## 1. Overview & Standard HTTP Status Codes
 
-AURA Mini provides a modular RESTful API built on FastAPI.
+AURA provides a modular RESTful API built on FastAPI.
 
-| Status Code | Meaning | Usage in AURA Mini |
+| Status Code | Meaning | Usage in AURA |
 | :--- | :--- | :--- |
 | **`200 OK`** | Success | Request succeeded and returned expected data. |
 | **`400 Bad Request`** | Client Error | Invalid parameter or unsupported simulation scenario. |

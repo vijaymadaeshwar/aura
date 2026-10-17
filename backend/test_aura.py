@@ -1,5 +1,5 @@
 """
-AURA MINI - Comprehensive Test Suite
+AURA - Comprehensive Test Suite
 Tests Observability, Detection, RCA, Runbooks, Remediation, Verification, REST APIs,
 and PostgreSQL Database Layer Integration.
 """

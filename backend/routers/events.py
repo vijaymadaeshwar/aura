@@ -1,5 +1,5 @@
 """
-AURA MINI - Events & Logs API Router
+AURA - Events & Logs API Router
 """
 
 from fastapi import APIRouter, Query

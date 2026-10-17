@@ -1,5 +1,5 @@
 # Software Requirements Specification (SRS)
-## Project: AURA Mini — Autonomous Reliability Agent
+## Project: AURA — Autonomous Reliability Agent
 **Document Version:** 1.0.0  
 **Status:** Implemented & Verified  
 **Target Audience:** Software Engineering Evaluation, Technical Placement Interviews
@@ -9,12 +9,12 @@
 ## 1. Introduction
 
 ### 1.1 Purpose
-The purpose of **AURA Mini** is to provide an autonomous, closed-loop reliability agent that monitors local system health, detects abnormal threshold violations, diagnoses probable root causes using deterministic rules, executes predefined remediation runbooks, and verifies system recovery through post-remediation telemetry re-measurement.
+The purpose of **AURA** is to provide an autonomous, closed-loop reliability agent that monitors local system health, detects abnormal threshold violations, diagnoses probable root causes using deterministic rules, executes predefined remediation runbooks, and verifies system recovery through post-remediation telemetry re-measurement.
 
-This document defines the functional and non-functional requirements implemented in the AURA Mini software system.
+This document defines the functional and non-functional requirements implemented in the AURA software system.
 
 ### 1.2 Scope
-AURA Mini encompasses:
+AURA encompasses:
 - Real-time host telemetry collection via standard operating system performance counters.
 - Anomaly and threshold breach detection with severity classification.
 - Transparent, deterministic Root Cause Analysis (RCA) with confidence scoring and evidence tracking.
@@ -34,7 +34,7 @@ AURA Mini encompasses:
 
 ## 2. System Overview
 
-AURA Mini operates as a self-contained, event-driven reliability loop:
+AURA operates as a self-contained, event-driven reliability loop:
 
 ```
 +-----------------------------------------------------------------------------------+
@@ -164,7 +164,7 @@ AURA Mini operates as a self-contained, event-driven reliability loop:
 
 ## 7. Out of Scope (Current Version)
 
-The following capabilities are explicitly outside the scope of AURA Mini v1.0.0 and labeled as **Future Enhancements**:
+The following capabilities are explicitly outside the scope of AURA v1.0.0 and labeled as **Future Enhancements**:
 
 - Multi-tenant user authentication and Role-Based Access Control (RBAC) with JWT tokens.
 - Distributed metric ingestion agents (e.g., Prometheus / OpenTelemetry collectors).

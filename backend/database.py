@@ -1,5 +1,5 @@
 """
-AURA MINI - PostgreSQL Database Layer
+AURA - PostgreSQL Database Layer
 Provides connection pooling, transaction context management, and schema migrations for PostgreSQL.
 """
 
@@ -16,7 +16,7 @@ from psycopg2.extras import RealDictCursor, RealDictRow
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from config import get_db_params, DATABASE_URL
 
-logger = logging.getLogger("AURA_MINI.database")
+logger = logging.getLogger("AURA.database")
 
 # Global connection pool
 _connection_pool: Optional[pool.ThreadedConnectionPool] = None
@@ -136,7 +136,7 @@ def init_db() -> None:
     Initialize all PostgreSQL database tables, indexes, and default settings.
     Idempotent and safe to run on every application startup.
     """
-    logger.info("Initializing PostgreSQL schema for AURA Mini...")
+    logger.info("Initializing PostgreSQL schema for AURA...")
     with get_db() as conn:
         cursor = conn.cursor()
 

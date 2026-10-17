@@ -1,5 +1,5 @@
 """
-AURA MINI - Root Cause Analysis (RCA) Engine (Module 3: Root Cause Analysis)
+AURA - Root Cause Analysis (RCA) Engine (Module 3: Root Cause Analysis)
 Rule-based deterministic diagnosis engine that analyzes metric telemetry and error logs.
 Transparent, explainable, and interview-ready.
 """

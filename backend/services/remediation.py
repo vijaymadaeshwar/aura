@@ -1,5 +1,5 @@
 """
-AURA MINI - Automated Remediation Service (Module 5: Automated Remediation)
+AURA - Automated Remediation Service (Module 5: Automated Remediation)
 Safely executes runbook recovery actions with explicit step-by-step progress tracking.
 """
 

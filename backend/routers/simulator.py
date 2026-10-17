@@ -1,5 +1,5 @@
 """
-AURA MINI - Incident Simulator API Router
+AURA - Incident Simulator API Router
 """
 
 from fastapi import APIRouter, Query, HTTPException

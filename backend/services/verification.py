@@ -1,5 +1,5 @@
 """
-AURA MINI - Recovery Verification Service (Module 6: Recovery Verification)
+AURA - Recovery Verification Service (Module 6: Recovery Verification)
 Enforces closed-loop verification: re-measures telemetry to confirm true recovery.
 Distinguishes between 'ACTION EXECUTED' vs 'SYSTEM RECOVERED'.
 """

@@ -1,6 +1,6 @@
-# AURA MINI — System Architecture & Technical Specifications
+# AURA — System Architecture & Technical Specifications
 
-This document outlines the architectural patterns, state machine transitions, telemetry pipelines, and deterministic reliability logic implemented in **AURA MINI**.
+This document outlines the architectural patterns, state machine transitions, telemetry pipelines, and deterministic reliability logic implemented in **AURA**.
 
 ---
 
@@ -54,7 +54,7 @@ This document outlines the architectural patterns, state machine transitions, te
 +-------------------------------------------------------------------------------+
 |                       PERSISTENCE LAYER (PostgreSQL 16)                       |
 |  ---------------------------------------------------------------------------  |
-|  aura_db (Connection Pool + Alembic Migrations):                              |
+|  aura_reliability_db (Connection Pool + Alembic Migrations):                  |
 |  - incidents            - incident_events (Timeline)                          |
 |  - recovery_actions     - telemetry_history (Sliding Window)                  |
 |  - system_settings                                                            |

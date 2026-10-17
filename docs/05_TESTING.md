@@ -1,5 +1,5 @@
 # Test Strategy & Execution Report
-## Project: AURA Mini — Autonomous Reliability Agent
+## Project: AURA — Autonomous Reliability Agent
 **Document Version:** 1.0.0  
 **Test Framework:** `pytest 9.1.1` (`anyio 4.14.2`, `httpx 0.28.1`)  
 **Test Suite Files:** `backend/test_aura.py`, `backend/test_database_pg.py`  
@@ -9,7 +9,7 @@
 
 ## 1. Testing Strategy
 
-The AURA Mini test suite validates every module of the reliability loop through automated unit, integration, and API tests.
+The AURA test suite validates every module of the reliability loop through automated unit, integration, and API tests.
 
 ```
 +---------------------------------------------------------------------------------+
