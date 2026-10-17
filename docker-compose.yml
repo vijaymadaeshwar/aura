@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL Database Service
+  postgres:
+    image: postgres:16-alpine
+    container_name: aura_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: aura_user
+      POSTGRES_PASSWORD: aura_password
+      POSTGRES_DB: aura_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aura_user -d aura_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      - aura_net
+
+  # 2. AURA Mini Unified Application Service (FastAPI + React Dashboard)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aura_app
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=postgresql://aura_user:aura_password@postgres:5432/aura_db
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=aura_user
+      - POSTGRES_PASSWORD=aura_password
+      - POSTGRES_DB=aura_db
+      - PORT=8000
+      - HOST=0.0.0.0
+      - ENVIRONMENT=production
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - aura_net
+
+volumes:
+  postgres_data:
+    name: aura_postgres_data
+
+networks:
+  aura_net:
+    name: aura_network
+    driver: bridge
