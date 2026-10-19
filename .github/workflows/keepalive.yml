@@ -1,0 +1,13 @@
+name: keep-alive
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping AURA demo to prevent Render cold start
+        run: curl -fsS -o /dev/null -w "AURA %{http_code} in %{time_total}s\n" --max-time 90 https://aura-94w5.onrender.com/ || true
